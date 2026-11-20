@@ -1,0 +1,59 @@
+[
+  {
+    "id": "4de9839090954f60b082f52816a908c1",
+    "items": [
+      {
+        "product_id": "capricho-artesanal",
+        "product_name": "Capricho artesanal",
+        "quantity": 1,
+        "unit_price_cents": 4000
+      }
+    ],
+    "customer_name": "Usuario A",
+    "customer_email": "a@example.com",
+    "note": "",
+    "status": "cancelled",
+    "total_cents": 4000,
+    "created_at": "2026-11-20T00:32:24.532023+00:00",
+    "expires_at": "2026-11-20T00:37:24.532023+00:00",
+    "updated_at": "2026-11-20T00:32:24.629476+00:00"
+  },
+  {
+    "id": "926e8b796bde45f296f9590b9fa63486",
+    "items": [
+      {
+        "product_id": "capricho-artesanal",
+        "product_name": "Capricho artesanal",
+        "quantity": 1,
+        "unit_price_cents": 4000
+      }
+    ],
+    "customer_name": "Usuario A",
+    "customer_email": "a@example.com",
+    "note": "",
+    "status": "expired",
+    "total_cents": 4000,
+    "created_at": "2026-11-20T00:32:24.646923+00:00",
+    "expires_at": "2026-11-20T00:32:23.673871+00:00",
+    "updated_at": "2026-11-20T00:32:24.686566+00:00"
+  },
+  {
+    "id": "9d5dfe59ab70400ea1d13d95881a3b0f",
+    "items": [
+      {
+        "product_id": "capricho-artesanal",
+        "product_name": "Capricho artesanal",
+        "quantity": 1,
+        "unit_price_cents": 4000
+      }
+    ],
+    "customer_name": "Usuario A",
+    "customer_email": "a@example.com",
+    "note": "",
+    "status": "confirmed",
+    "total_cents": 4000,
+    "created_at": "2026-11-20T00:32:41.407931+00:00",
+    "expires_at": "2026-11-20T00:37:41.407931+00:00",
+    "updated_at": "2026-11-20T00:32:41.482166+00:00"
+  }
+]

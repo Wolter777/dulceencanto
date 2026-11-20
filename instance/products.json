@@ -1,0 +1,44 @@
+[
+  {
+    "id": "panqueque",
+    "name": "Panqueque",
+    "category": "pasteles",
+    "category_label": "Pasteles",
+    "description": "Un antojo delicioso para disfrutar a cualquier hora.",
+    "image": "images (1).jfif",
+    "tag": "Favorito",
+    "price_cents": 4500,
+    "stock_quantity": 10,
+    "reserved_quantity": 0,
+    "uploaded": false,
+    "created_at": "2026-01-01T00:00:00+00:00"
+  },
+  {
+    "id": "delicia-casa",
+    "name": "Delicia de la casa",
+    "category": "postres",
+    "category_label": "Postres",
+    "description": "Una dulce sorpresa para consentirte.",
+    "image": "images.jfif",
+    "tag": "Recien hecho",
+    "price_cents": 5500,
+    "stock_quantity": 10,
+    "reserved_quantity": 0,
+    "uploaded": false,
+    "created_at": "2026-01-01T00:00:00+00:00"
+  },
+  {
+    "id": "capricho-artesanal",
+    "name": "Capricho artesanal",
+    "category": "panes",
+    "category_label": "Panes",
+    "description": "Un toque de felicidad: el acompañamiento perfecto para tu pausa favorita.",
+    "image": "images (2).jfif",
+    "tag": "Para compartir",
+    "price_cents": 4000,
+    "stock_quantity": 1,
+    "reserved_quantity": 0,
+    "uploaded": false,
+    "created_at": "2026-01-01T00:00:00+00:00"
+  }
+]

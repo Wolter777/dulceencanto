@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }} | Dulce Encanto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="public-proof-page">
+        <section class="public-proof-card" aria-labelledby="proof-title">
+            {% if not encontrado %}
+            <p class="eyebrow">Dulce Encanto</p>
+            <h1 id="proof-title">{{ titulo }}</h1>
+            <p class="public-proof-message">{{ mensaje }}</p>
+            {% elif tipo == "producto" %}
+            <p class="eyebrow">Ficha pública del producto</p>
+            <h1 id="proof-title">{{ producto.name }}</h1>
+            <p>{{ producto.description }}</p>
+            <p><strong>Estado:</strong>
+                {% if producto.quantity == 0 %}No disponible
+                {% elif producto.reserved %}{{ producto.reserved_quantity }} reservado(s) · {{ producto.quantity }} disponible(s)
+                {% else %}Disponible · {{ producto.quantity }} unidad(es){% endif %}
+            </p>
+            {% if producto.price_cents %}
+            <p><strong>Precio:</strong> ${{ "%.2f"|format(producto.price_cents / 100) }} MXN</p>
+            {% endif %}
+            <img class="public-proof-qr" src="{{ url_for('ficha_producto_qr', product_id=producto.id) }}" alt="Código QR de la ficha del producto">
+            {% else %}
+            <p class="eyebrow">Comprobante de reserva</p>
+            <h1 id="proof-title">Folio {{ reserva.id[:12] }}</h1>
+            <p><strong>Estado:</strong> {{ estado }}</p>
+            {% for item in reserva['items'] %}
+            <p><strong>{{ item.product_name }}</strong> · Cantidad: {{ item.quantity }}</p>
+            {% endfor %}
+            {% if reserva.status == "reserved" %}
+            <p><strong>Tiempo restante:</strong>
+                <span data-countdown-reservation data-expiration="{{ reserva.expires_at.isoformat() }}">
+                    {{ '%02d:%02d'|format((remaining_seconds // 60), (remaining_seconds % 60)) }}
+                </span>
+            </p>
+            {% endif %}
+            <p><strong>Creada:</strong> {{ reserva.created_at.strftime('%d/%m/%Y %H:%M') }}</p>
+            <img class="public-proof-qr" src="{{ url_for('reserva_qr', order_id=reserva.id) }}" alt="Código QR del comprobante">
+            {% endif %}
+            <a class="public-proof-link" href="{{ url_for('index') }}">Abrir Dulce Encanto</a>
+        </section>
+    </main>
+    {% if encontrado and tipo == "reserva" and reserva.status == "reserved" %}
+    <script>
+        const countdown = document.querySelector("[data-countdown-reservation]");
+        if (countdown) {
+            const expires = new Date(countdown.dataset.expiration);
+            const update = () => {
+                const seconds = Math.max(0, Math.ceil((expires.getTime() - Date.now()) / 1000));
+                countdown.textContent = `${String(Math.floor(seconds / 60)).padStart(2, "0")}:${String(seconds % 60).padStart(2, "0")}`;
+            };
+            update();
+            setInterval(update, 1000);
+        }
+    </script>
+    {% endif %}
+</body>
+</html>
